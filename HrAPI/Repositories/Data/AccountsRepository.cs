@@ -55,18 +55,6 @@ namespace HrAPI.Repositories.Data
             {
                 return "404";
             }
-
-
-            //var response = myContext.Accounts.SingleOrDefault(a => a.NIK == loginVm.NIK);
-            //if (response == null || !BC.Verify(loginVm.Password, response.Password))
-            //{
-            //    return null;
-            //}
-
-            //var logging = new LoginVm();
-            //logging.Email = response.Accounts.Employees.Email;
-            //logging.Password = response.Accounts.Password;
-            //return logging;
             
         }
     }
