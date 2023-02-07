@@ -13,20 +13,6 @@ namespace HrAPI.Repositories.Data
         {
             this.myContext = myContext;
         }
-        public static string RandomString(int length)
-        {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[length];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            return new String(stringChars);
-        }
-
         public string GenerateNIK()
         {
             var lastNIk = "";
@@ -89,9 +75,6 @@ namespace HrAPI.Repositories.Data
             accRole.AccountNIK = empl.NIK;
             myContext.Add(accRole);
             var response = myContext.SaveChanges();
-
-            //var generatePassword = RandomString(10);
-           
 
             return response;
         }

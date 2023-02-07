@@ -6,7 +6,6 @@ namespace HrAPI.Model
 {
     public class AccountRoles
     {
-        //public int Id { get; set; }
         [ForeignKey("Roles")]
         public int? RoleId { get; set; }
         [JsonIgnore]
