@@ -20,42 +20,36 @@ namespace HrAPI.Repositories.Data
             this.myContext = myContext;
             this._configuration = configuration;
         }
-        public async Task<string> Login([FromForm]LoginVm loginVm)
+        public async Task<string> Login(LoginVm loginVm)
         {
             var response = await myContext.AccountRoles
-                .Where(ar => ar.Accounts.Employees.Email == loginVm.Email
-                && ar.Accounts.Password == loginVm.Password)
+                .Where(ar => ar.Accounts.Employees.Email == loginVm.Email)
                 .Include(r => r.Roles).Include(e => e.Accounts.Employees)
                 .FirstOrDefaultAsync();
-            if (loginVm.Password == null)
+
+            if (response == null || !BC.Verify(loginVm.Password, response.Accounts.Password))
             {
                 return "400";
             }
-            else if (response != null)
-            {
-                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-                var credential = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-                var claims = new[]
-                {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var credential = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
                     new Claim("Email", response.Accounts.Employees.Email),
                     new Claim("roles", response.Roles.Name)
                 };
 
-                var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
-                        _configuration["Jwt:Audience"],
-                        claims,
-                        expires: DateTime.Now.AddMinutes(15),
-                        signingCredentials: credential);
+            var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
+                    _configuration["Jwt:Audience"],
+                    claims,
+                    expires: DateTime.Now.AddMinutes(15),
+                    signingCredentials: credential);
 
-                var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-                return jwt;
-            }
-            else
-            {
-                return "404";
-            }
-            
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            return jwt;
+
         }
     }
 }

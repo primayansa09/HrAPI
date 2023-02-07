@@ -2,6 +2,7 @@
 using HrAPI.Model;
 using HrAPI.Repositories.Data;
 using HrAPI.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -10,19 +11,20 @@ namespace HrAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountsController : BaseController<Accounts, AccountsRepository, string>
+    public class AccountsController : ControllerBase
     {
         private readonly AccountsRepository accountsRepository;
 
-        public AccountsController(AccountsRepository accountsRepository) : base(accountsRepository)
+        public AccountsController(AccountsRepository accountsRepository)
         {
             this.accountsRepository = accountsRepository;
         }
-        [HttpPost]
-        [Route("Login")]
-        public ActionResult Login(LoginVm login)
+        [AllowAnonymous]
+        [HttpPost("Login")]
+        //[Route("Login")]
+        public async Task<ActionResult> Login(LoginVm login)
         {
-            var response = accountsRepository.Login(login);
+            var response = await accountsRepository.Login(login);
 
             if (response != null)
             {
@@ -34,7 +36,7 @@ namespace HrAPI.Controllers
                         Data = response
                     });
             }
-            else
+            else if(response == "400")
             {
                 return StatusCode(400,
                     new
@@ -44,6 +46,12 @@ namespace HrAPI.Controllers
                         Data = response
                     });
             }
+            return StatusCode(404,
+            new
+            {
+                Status = HttpStatusCode.BadRequest,
+                Message = "Login Gagal"
+            });
         }
     }
 }
