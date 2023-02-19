@@ -17,7 +17,7 @@ namespace HrAPI.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<AccountRoles>().HasKey(ar => new { ar.RoleId, ar.AccountNIK });
+            //builder.Entity<AccountRoles>().HasKey(ar => new { ar.RoleId, ar.AccountNIK });
             //builder.Entity<AccountRoles>()
             //    .HasOne(a => a.Accounts)
             //    .WithMany(ar => ar.AccountRoles)

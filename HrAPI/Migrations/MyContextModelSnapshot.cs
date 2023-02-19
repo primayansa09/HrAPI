@@ -24,15 +24,23 @@ namespace HrAPI.Migrations
 
             modelBuilder.Entity("HrAPI.Model.AccountRoles", b =>
                 {
-                    b.Property<int?>("RoleId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("AccountNIK")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("RoleId");
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("AccountNIK");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("AccountRoles");
                 });
@@ -62,6 +70,7 @@ namespace HrAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -138,9 +147,7 @@ namespace HrAPI.Migrations
 
                     b.HasOne("HrAPI.Model.Roles", "Roles")
                         .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Accounts");
 

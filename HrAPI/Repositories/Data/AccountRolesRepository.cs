@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HrAPI.Repositories.Data
 {
-    public class AccountRolesRepository : GeneralRepository<DbContext, AccountRoles, string>
+    public class AccountRolesRepository : GeneralRepository<MyContext, AccountRoles, string>
     {
         private readonly MyContext myContext;
 

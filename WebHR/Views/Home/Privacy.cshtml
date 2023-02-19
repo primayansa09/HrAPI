@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<!-- Main Content -->
+<!-- Index Education -->
+<div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        @*<h1 class="h3 mb-2 text-gray-800">Table</h1>*@
+        @*<p class="mb-4">
+        DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank"
+        href="https://datatables.net">official DataTables documentation</a>.
+        </p>*@
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Data Education</h6>
+            </div>
+            <div class="card-body">
+                <!-- Button trigger modal -->
+                <div class="btn">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" onclick="ClearAction();  SelectUniversity(); BtnAction('Insert');" data-target="#myModal">
+                        Create New Employee
+                    </button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Insert</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="user">
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="FirstName"
+                                                   placeholder="First Name">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control form-control-user" id="LastName"
+                                                   placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user" id="Email"
+                                               placeholder="Email Address">
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="Phone"
+                                                   placeholder="Pone">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control form-control-user" id="BirthDate"
+                                                   placeholder="BirthDate">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="Salary"
+                                                   placeholder="Salary">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @*   <input type="text" class="form-control form-control-user" id="Gender"
+                                            placeholder="Gender">*@
+                                            <select class="form-control" id="Gender">
+                                                <option selected>Degree</option>
+                                                <option value="0">Male</option>
+                                                <option value="1">Famale</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            @*<input type="text" class="form-control form-control-user" id="RoleId"
+                                            placeholder="Role Id">*@
+                                            <select class="form-control" id="Gender">
+                                                <option selected>Role</option>
+                                                <option value="1">Admin</option>
+                                                <option value="2">Manager</option>
+                                                <option value="3">Employee</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="DepartementId"
+                                                   placeholder="Departement Id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control form-control-user" id="Password"
+                                                   placeholder="Password">
+                                        </div>
+                                        @*   <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="ManagerId"
+                                        placeholder="Manager Id">
+                                        </div>*@
+                                    </div>
+                                    <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                        Register Account
+                                    </a>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal" id="Save" onclick="Insert()">Insert</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal" id="Update" onclick="Update()">Update</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="tb_education">
+                        <thead>
+                            <tr>
+                                <th width="10%">No</th>
+                                <th> NIK</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>BirthDate</th>
+                                <th>Salary</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Manager Id</th>
+                                <th>Departement Id</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

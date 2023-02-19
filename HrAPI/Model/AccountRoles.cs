@@ -6,15 +6,16 @@ namespace HrAPI.Model
 {
     public class AccountRoles
     {
-        [ForeignKey("Roles")]
-        public int? RoleId { get; set; }
-        [JsonIgnore]
-        public virtual Roles? Roles { get; set; }
+      [Key]
+      public int Id { get; set; }
+      [ForeignKey("Roles")]
+      public int? RoleId { get; set; }
+      [ForeignKey("Accounts")]
+      public string? AccountNIK { get; set; }
+      [JsonIgnore]
+      public virtual Roles? Roles { get; set; }
+      [JsonIgnore]
+      public virtual Accounts? Accounts { get; set; }
 
-        [ForeignKey("Accounts")]
-        public string? AccountNIK { get; set; }
-        [JsonIgnore]
-        public virtual Accounts? Accounts { get; set; }
-        
     }
 }

@@ -8,13 +8,11 @@ namespace HrAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartementController : BaseController<Departements, DepartementRepository, string>
+    public class DepartementController : BaseController<Departements, DepartementRepository, int>
     {
-        private readonly DepartementRepository departementRepository;
 
         public DepartementController(DepartementRepository departementRepository) : base(departementRepository)
         {
-            this.departementRepository = departementRepository;
         }
     }
 }

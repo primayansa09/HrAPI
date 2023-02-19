@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/SbLayout/SbLayout.cshtml";
+}
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create New Employee</h1>
+                        </div>
+                        <form class="user">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="InputFirstName"
+                                           placeholder="First Name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="InputLastName"
+                                           placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="InputEmail"
+                                       placeholder="Email Address">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="InputPhone"
+                                           placeholder="Pone">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="InputBirthDate"
+                                           placeholder="BirthDate">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="InputSalary"
+                                           placeholder="Salary">
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="InputGender">
+                                        <option selected>Gender</option>
+                                        <option value="0">Male</option>
+                                        <option value="1">Famale</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0" hidden>
+                                    <select class="form-control" id="InputRoleId">
+                                        @*  <option selected>Role</option>*@
+                                        @*   <option value="1">Admin</option>
+                                        <option value="2">Manager</option>*@
+                                        <option value="3">Employee</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select class="form-control" id="InputDepartementId">
+                                        <option selected>Departement</option>
+                                        <option value="1">IT Support</option>
+                                        <option value="2">RAS</option>
+                                        <option value="3">RPA</option>
+                                        <option value="4">Consulting Service</option>
+                                        <option value="7">HR</option>
+                                    </select>
+                                </div>
+                                 <div class="col-sm-6">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="InputManagerId" hidden
+                                           placeholder="Manager Id">
+                                </div>
+                                    <input type="password" class="form-control" id="InputPassword"
+                                           placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                               
+                            </div>
+                            <a class="btn btn-danger btn-user btn-lg btn-block" onclick="Insert(); ClearAction()">Register Account</a>
+                        </form>
+                        <hr>
+                        <div class="text-center" hidden>
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                        <div class="text-center" hidden>
+                            <a class="small" href="login.html">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/js/registerscript.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+

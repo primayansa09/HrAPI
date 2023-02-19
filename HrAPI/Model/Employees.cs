@@ -26,13 +26,13 @@ namespace HrAPI.Model
         //One manager have one departement-One To One
         //[JsonIgnore]
         [InverseProperty("Manager")]
-        public virtual Departements Manager { get; set; }
+        public virtual Departements? Manager { get; set; }
         // Many employees have one departement - Many To One
         [ForeignKey("Departements")]
         public int? Departement_Id { get; set; }
-        public virtual Departements Departements { get; set; }
+        public virtual Departements? Departements { get; set; }
         //[JsonIgnore]
-        public virtual Accounts Accounts { get; set; }
+        public virtual Accounts? Accounts { get; set; }
 
 
     }

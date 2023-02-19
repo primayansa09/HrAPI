@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HrAPI.Repositories.Data
 {
-    public class EmployeesRepository : GeneralRepository<DbContext, Employees, string>
+    public class EmployeesRepository : GeneralRepository<MyContext, Employees, string>
     {
         private readonly MyContext myContext;
         public EmployeesRepository(MyContext myContext) : base(myContext)
@@ -35,7 +35,7 @@ namespace HrAPI.Repositories.Data
             lastNIk = dateTime.ToString("yyyyddMM") + lastNIk;
             return lastNIk;
         }
-        public int Reagister(RegisterVm registerVm)
+        public int Register(RegisterVm registerVm)
         {
             var newNIK = GenerateNIK();
             if(myContext.Employees.SingleOrDefault(e => e.Email == registerVm.Email) != null)
@@ -65,11 +65,6 @@ namespace HrAPI.Repositories.Data
             myContext.Add(acc);
             myContext.SaveChanges();
 
-            var depart = new Departements();
-            depart.Manager_Id = registerVm.Manager_Id;
-            myContext.Add(depart);
-            myContext.SaveChanges();
-
             var accRole = new AccountRoles();
             accRole.RoleId = registerVm.Role_Id;
             accRole.AccountNIK = empl.NIK;
@@ -78,6 +73,13 @@ namespace HrAPI.Repositories.Data
 
             return response;
         }
-     
+        //public IEnumerable<EmployeeVM> GetEmployee()
+        //{
+        //    var getEmployee = (from emp in myContext.Employees
+        //                       join role in myContext.Roles
+        //                       on emp.NIK equals mngr.Id
+        //                       where mngr.nam)
+        //}
+
     }
 }

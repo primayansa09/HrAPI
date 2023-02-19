@@ -102,9 +102,9 @@ namespace HrAPI.Base
         }
 
         [HttpPut]
-        public virtual ActionResult Update(Entity entity)
+        public virtual ActionResult Update(Entity entity, Key key)
         {
-            var response = repository.Update(entity);
+            var response = repository.Update(entity, key);
             if (response == 1)
             {
                 return StatusCode(200, new { Status = HttpStatusCode.OK, Message = "Data successfully updated", Data = response });

@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewData["Title"] = "Employee";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<!-- Main Content -->
+<div class="breadcrumbs mb-4" data-aos="fade-in" style="background-color:#CF1B1B">
+</div>
+<div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Data Employee</h6>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="user">
+                                <input type="text" class="form-control" id="InputNIK" readonly hidden>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="InputFirstName"
+                                               placeholder="First Name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="InputLastName"
+                                               placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="InputEmail"
+                                           placeholder="Email Address">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="InputPhone"
+                                               placeholder="Pone">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="InputBirthDate"
+                                               placeholder="BirthDate">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="InputSalary"
+                                               placeholder="Salary">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="InputGender">
+                                            <option selected>Gender</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Famale</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <select class="form-control" id="InputRoleId">
+                                            <option selected>Role</option>
+                                            <option value="1">Admin</option>
+                                            <option value="2">Manager</option>
+                                            <option value="3">Employee</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <select class="form-control" id="InputDepartementId">
+                                            <option selected>Departement</option>
+                                            <option value="1">IT Support</option>
+                                            <option value="2">RAS</option>
+                                            <option value="3">RPA</option>
+                                            <option value="4">Consulting Service</option>
+                                            <option value="7">HR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="InputManagerId"
+                                               placeholder="Manager Id">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal" id="Update" onclick="Update()">Update</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="tb_employee">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th width="10%">NIK</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>BirthDate</th>
+                                <th>Salary</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Manager Id</th>
+                                <th>Departement Id</th>
+                                <th width="10%">Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+
+<!-- End of Main Content -->
+
+@section Scripts{
+
+    <script src="~/js/employeescript.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}

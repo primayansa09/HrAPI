@@ -1,5 +1,6 @@
 using HrAPI.Context;
 using HrAPI.Repositories.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -11,8 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 //Setting Controller NewtonSoftJson
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+//Setting Cors
+builder.Services.AddCors(c => { c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); });
 //Setting Jwt
-builder.Services.AddAuthentication()
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.RequireHttpsMetadata = true;
@@ -38,7 +41,7 @@ builder.Services.AddScoped<EmployeesRepository>();
 builder.Services.AddScoped<DepartementRepository>();
 builder.Services.AddScoped<AccountRolesRepository>();
 builder.Services.AddScoped<AccountsRepository>();
-builder.Services.AddScoped<RolesRepository>();
+builder.Services.AddScoped<RoleRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -54,6 +57,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseAuthorization();
 

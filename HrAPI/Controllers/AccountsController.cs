@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Security.Claims;
 
 namespace HrAPI.Controllers
 {
@@ -21,7 +22,6 @@ namespace HrAPI.Controllers
         }
         [AllowAnonymous]
         [HttpPost("Login")]
-        //[Route("Login")]
         public async Task<ActionResult> Login(LoginVm login)
         {
             var response = await accountsRepository.Login(login);
@@ -36,22 +36,38 @@ namespace HrAPI.Controllers
                         Data = response
                     });
             }
-            else if(response == "400")
-            {
-                return StatusCode(400,
-                    new
-                    {
-                        Status = HttpStatusCode.BadRequest,
-                        Message = "NIK 0r Password is invalid",
-                        Data = response
-                    });
-            }
             return StatusCode(404,
             new
             {
                 Status = HttpStatusCode.BadRequest,
-                Message = "Login Gagal"
-            });
+                Message = "NIK or Password is invalid",
+                Data = response
+            }); ;
+        }
+        [HttpGet("Admins")]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AdminEndPoint()
+        {
+            var currentUser = GetCurrentUser();
+
+            return Ok($"Hi {currentUser.Email}, yuo are an");
+        }
+        private LoginVm GetCurrentUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            if(identity != null)
+            {
+                var userClaims = identity.Claims;
+
+                return new LoginVm
+                {
+                    
+                    Email = userClaims.FirstOrDefault(a => a.Type == ClaimTypes.Email)?.Value,
+                
+                };
+            }
+            return null;
         }
     }
 }

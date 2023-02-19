@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<div class="breadcrumbs" data-aos="fade-in" style="background-color:#CF1B1B">
+</div>
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create New Employee</h1>
+                        </div>
+                        <form class="user">
+                            @*form-control-user*@
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="txtFirstName"
+                                           placeholder="First Name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="txtLastName"
+                                           placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="txtEmail"
+                                       placeholder="Email Address">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="txtPhone"
+                                           placeholder="Pone">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="txtBirthDate"
+                                           placeholder="BirthDate">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="txtSalary"
+                                           placeholder="Salary">
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="txtGender">
+                                        <option selected>Gender</option>
+                                        <option value="0">Male</option>
+                                        <option value="1">Famale</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0" hidden>
+                                    <select class="form-control" id="txtRoleId">
+                                        @*  <option selected>Role</option>*@
+                                        @*   <option value="1">Admin</option>
+                                        <option value="2">Manager</option>*@
+                                        <option value="3">Employee</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select class="form-select" id="txtDepartementId">
+                                        <option selected>Departement</option>
+                                        <option value="1">IT Support</option>
+                                        <option value="2">RAS</option>
+                                        <option value="3">RPA</option>
+                                        <option value="4">Consulting Service</option>
+                                        <option value="7">HR</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="txtManagerId" hidden
+                                               placeholder="Manager Id">
+                                    </div>
+                                    <input type="password" class="form-control" id="txtPassword"
+                                           placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                            </div>
+                            <div class="pt-1">
+                                <button class="btn btn-user btn-lg btn-block" style="background-color:#CF1B1B" onclick="Insert(); ClearAction()">
+                                    <a class="text text-light">
+                                    Register Account
+                                    </a>
+                                </button>
+                            </div>
+                                @*<a class="btn btn-primary btn-user btn-block" value="Create" onclick="Insert(); ClearAction()" style="background-color:#CF1B1B">
+                                Register Account
+                            </a>*@
+                         @*       <a class="btn btn-danger btn-user btn-lg btn-block" value="Create" onclick="Insert(); ClearAction()">Register Account</a>*@
+                           
+                        </form>
+                        <hr>
+                        <div class="text-center" hidden>
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                        <div class="text-center" hidden>
+                            <a class="small" href="login.html">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/registerscript.js"></script>
+    @*<script src="~/js/departementscript.js"></script>*@
+}
+
+

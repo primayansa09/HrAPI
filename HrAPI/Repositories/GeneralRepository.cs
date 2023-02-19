@@ -1,24 +1,25 @@
-﻿using HrAPI.Repositories.Interface;
+﻿using HrAPI.Context;
+using HrAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace HrAPI.Repositories
 {
     public class GeneralRepository<Context, Entity, Key> : IRepository<Entity, Key>
         where Entity : class
-        where Context : DbContext
+        where Context : MyContext
     {
-        private readonly DbContext dbContext;
+        private readonly MyContext myContext;
         private readonly DbSet<Entity> entities;
-        public GeneralRepository(DbContext dbContext)
+        public GeneralRepository(MyContext myContext)
         {
-            this.dbContext = dbContext;
-            entities = dbContext.Set<Entity>();
+            this.myContext = myContext;
+            entities = myContext.Set<Entity>();
         }
 
         public int Create(Entity entity)
         {
             entities.Add(entity);
-            return dbContext.SaveChanges();
+            return myContext.SaveChanges();
         }
 
         public IEnumerable<Entity> Get()
@@ -31,15 +32,16 @@ namespace HrAPI.Repositories
             return entities.Find(key);
         }
 
-        public int Update(Entity entity)
+        public int Update(Entity entity, Key key)
         {
-            dbContext.Entry(entity).State = EntityState.Modified;
-            return dbContext.SaveChanges();
+            myContext.Entry(entity).State = EntityState.Modified;
+            return myContext.SaveChanges();
         }
         public int Delete(Key key)
         {
-            dbContext.Remove(entities.Find(key));
-            return dbContext.SaveChanges();
+            var delete = entities.Find(key);
+            myContext.Remove(delete);
+            return myContext.SaveChanges();            
         }
     }
 }

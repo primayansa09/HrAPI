@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Role";
+    Layout = "~/Views/SbLayout/SbLayout.cshtml";
+}
+
+<!-- Main Content -->
+
+<div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Role</h6>
+            </div>
+            <div class="card-body">
+                <!-- Button trigger modal -->
+                <div class="btn">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" onclick="ClearAction(); BtnAction('Insert');" data-target="#myModal">
+                        Create New Role
+                    </button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Create New Role</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="user">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="Id" readonly hidden
+                                               placeholder="Id">
+                                    </div>
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="InputRole"
+                                            placeholder="Role">
+                                            @*<select class="form-control" id="InputRole">
+                                                <option selected>Role</option>
+                                                <option value="1">Admin</option>
+                                                <option value="2">Manager</option>
+                                                <option value="3">Employee</option>on>
+                                            </select>*@
+                                        </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal" id="Save" onclick="Insert()">Insert</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal" id="Update" onclick="Update()">Update</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="tb_role">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+@section Scripts{
+    <script src="~/js/rolescript.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+
+
+

@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HrAPI.Repositories.Data
 {
-    public class DepartementRepository : GeneralRepository<DbContext, Departements, string>
+    public class DepartementRepository : GeneralRepository<MyContext, Departements, int>
     {
-        private readonly MyContext myContext;
+   
         public DepartementRepository(MyContext myContext) : base(myContext)
         {
-            this.myContext = myContext;
+         
         }
     }
 }

@@ -22,7 +22,7 @@ namespace HrAPI.Controllers
         [Route("Register")]
         public ActionResult Register(RegisterVm registerVm)
         {
-            var response = employeesRepository.Reagister(registerVm);
+            var response = employeesRepository.Register(registerVm);
             if(response == 1)
             {
                 return StatusCode(200,

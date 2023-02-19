@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrAPI", "HrAPI\HrAPI.csproj", "{AAAE7E27-9020-4B63-A117-AA134D75E9A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrAPI", "HrAPI\HrAPI.csproj", "{AAAE7E27-9020-4B63-A117-AA134D75E9A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHR", "WebHR\WebHR.csproj", "{731119C0-93BD-47F8-8916-55B63896A0CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUser", "WebUser\WebUser.csproj", "{7EBF3DC6-7E83-4CC5-846A-4EB7E0C5B211}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{AAAE7E27-9020-4B63-A117-AA134D75E9A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAAE7E27-9020-4B63-A117-AA134D75E9A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAAE7E27-9020-4B63-A117-AA134D75E9A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731119C0-93BD-47F8-8916-55B63896A0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731119C0-93BD-47F8-8916-55B63896A0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731119C0-93BD-47F8-8916-55B63896A0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731119C0-93BD-47F8-8916-55B63896A0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EBF3DC6-7E83-4CC5-846A-4EB7E0C5B211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EBF3DC6-7E83-4CC5-846A-4EB7E0C5B211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EBF3DC6-7E83-4CC5-846A-4EB7E0C5B211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EBF3DC6-7E83-4CC5-846A-4EB7E0C5B211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
