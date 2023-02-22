@@ -14,9 +14,9 @@ namespace HrAPI.ViewModel
         public string Salary { get; set; }
         public string Email { get; set; }
         public Gender Gender { get; set; }
-        public int? Role_Id { get; set; }
-        public string? Manager_Id { get; set; }
+        public string? Role { get; set; }
+        //public string? Manager_Id { get; set; }
         public string? ManagerName { get; set; }
-        public int Departement_Id { get; set; }
+        public string DepartementName { get; set; }
     }
 }

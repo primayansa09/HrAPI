@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NXOn4F0uN3cNDbEGA3DYPmQW37QStAd/doAgonQwrmg=",
+  "Hash": "Juh6s3/X8fXm2FqvLKnLldnq8YUXH3H25Ow+DMK11QQ=",
   "Source": "WebUser",
   "BasePath": "_content/WebUser",
   "Mode": "Default",
@@ -321,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\wanda.primayansa\\source\\repos\\HrAPI\\WebUser\\wwwroot\\assets\\img\\github.png",
+      "SourceId": "WebUser",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\wanda.primayansa\\source\\repos\\HrAPI\\WebUser\\wwwroot\\",
+      "BasePath": "_content/WebUser",
+      "RelativePath": "assets/img/github.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\github.png"
     },
     {
       "Identity": "C:\\Users\\wanda.primayansa\\source\\repos\\HrAPI\\WebUser\\wwwroot\\assets\\img\\hero-bg.jpg",

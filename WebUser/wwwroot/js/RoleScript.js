@@ -34,8 +34,8 @@ function GetById(id) {
             //debugger;
             //console.log(result);
             var obj = result.data;
-            $('#InputId').val(obj.id);
-            $('#InputName').val(obj.name);
+            $('#Id').val(obj.id);
+            $('#RoleId').val(obj.name);
             $('#myModal').modal('show');
         },
         error: function (errormessage) {
@@ -48,7 +48,7 @@ function Insert() {
     var validateFrom = true;
 
     if (
-        $('#InputRole').val() == ""
+        $('#RoleId').val() == ""
     ) {
         Swal.fire({
             icon: 'error',
@@ -60,14 +60,14 @@ function Insert() {
 
     if (validateFrom) {
         var Role = new Object();
-        Role.name = $('#InputRole').val();
+        Role.name = $('#RoleId').val();
         $.ajax({
             type: 'POST',
             url: 'https://localhost:7148/api/Roles',
             data: JSON.stringify(Role),
             contentType: "application/json; charset=utf-8"
         }).then((result) => {
-            debugger;
+            /*  debugger;*/
             if (result.status == 200) {
                 $('#tb_role').DataTable().ajax.reload();
                 Swal.fire({
@@ -87,7 +87,7 @@ function Insert() {
 function Update() {
     var Role = new Object();
     Role.id = $('#Id').val();
-    Role.name = $('#InputRole').val();
+    Role.name = $('#RoleId').val();
     $.ajax({
         url: 'https://localhost:7148/api/Roles',
         type: 'PUT',
@@ -154,7 +154,7 @@ function Delete(id) {
 }
 
 function ClearAction() {
-    $('#InputRole').val('');
+    $('#RoleId').val('');
 
 }
 

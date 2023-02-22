@@ -70,8 +70,8 @@
                                  src="~/assets/img/undraw_profile.svg">
                             </a>
                         <ul>
-                            <li><a asp-controller="" asp-action="">Profile</a></li>
-                            <li><a asp-controller="" asp-action="">Logout</a></li>
+                            <li><a asp-controller="DashBoard" asp-action="Profile">Profile</a></li>
+                            <li><a onclick="Logout()">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -141,3 +141,6 @@
 </body>
 
 </html>
+@section Scripts{
+    <script src="~/js/loginscript.js"></script>
+}

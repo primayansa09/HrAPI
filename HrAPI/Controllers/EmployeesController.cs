@@ -18,6 +18,32 @@ namespace HrAPI.Controllers
         {
             this.employeesRepository = employeesRepository;
         }
+        [HttpGet]
+        [Route("Employee")]
+        public ActionResult getEmployee()
+        {
+            var response = employeesRepository.GetEmployee();
+            if(response != null)
+            {
+                return StatusCode(200,
+                    new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = response.Count() + "Data Found ",
+                        Data = response
+                    });
+            }
+            else
+            {
+                return StatusCode(400,
+                    new
+                    {
+                        Status = HttpStatusCode.NotFound,
+                        Message = "Data Not Found",
+                        Data = response
+                    });
+            }
+        }
         [HttpPost]
         [Route("Register")]
         public ActionResult Register(RegisterVm registerVm)

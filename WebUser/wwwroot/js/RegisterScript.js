@@ -1,4 +1,8 @@
-﻿
+﻿$(document).ready(function () {
+    SelectDepartement();
+})
+
+
 function Insert() {
     let validateForm = true;
 
@@ -79,6 +83,26 @@ function Insert() {
             }
         })
     } 
+}
+
+function SelectDepartement() {
+/*    debugger;*/
+    $.ajax({
+        type: 'GET',
+        url: 'https://localhost:7148/api/Departement',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            var obj = result.data;
+            console.log(obj);
+            for (var i = 0; i < obj.length; i++) {
+                $('#txtDepartementId').append('<option value="' + obj[i].id + '">' + obj[i].name + '</option>');
+            }
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
 }
 
 function ClearAction() {

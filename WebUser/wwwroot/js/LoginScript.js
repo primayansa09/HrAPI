@@ -1,5 +1,4 @@
-﻿
-function Login() {
+﻿function Login() {
    
     let validateForm = true;
 
@@ -51,9 +50,23 @@ function Login() {
     }
 }
 
+function Loader() {
+    var load = 'blok';
+
+    switch (type) {
+        case 'loading':
+            load = 'none';
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById('preloader').style.display = load;
+}
+
 function Logout() {
     localStorage.clear();
-    window.location.href = "/login/index"
+    window.location.href = "/Auth/Login"
 }
 
 function password_show_hide() {

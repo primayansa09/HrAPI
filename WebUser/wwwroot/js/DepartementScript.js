@@ -26,9 +26,11 @@
 })
 
 function Insert() {
+    console.log("masuk");
     let validateForm = true;
 
-    if ($('#txtDepartement').val() == ""
+    if (
+        $("#NameDepartement").val() == ""
     ) {
         Swal.fire({
             icon: 'error',
@@ -39,31 +41,34 @@ function Insert() {
     }
 
     if (validateForm) {
-        var insert = new Object();
-        insert.name = $('#txtDepartement').val();
+        console.log("berhasil");
+        var Insert = new Object();
+        Insert.name = $("#NameDepartement").val();
+        Insert.manager_Id = $('#ManagerId').val();
         $.ajax({
             url: "https://localhost:7148/api/Departement",
             type: "POST",
+            data: JSON.stringify(Insert),
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                if (data.status == 200 || data.status == 201) {
+            success: (result) => {
+
+                if (result.status == 200) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'Data successfully insert',
+                        text: 'Insert Success',
                     })
                     $('#tb_departement').DataTable().ajax.reload();
                 } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Failed',
-                        text: 'Data failed to insert',
+                        text: 'Insert Failed',
                     })
                 }
             },
-            "error": (data) => {
-                if (data.status == 400 || data.status == 500) {
+            "error": (result) => {
+                if (result.status == 400 || result.status == 500) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Failed',
@@ -72,12 +77,14 @@ function Insert() {
                 }
             }
         })
+        console.log("gagal");
     }
+
 }
 
 function GetById(id) {
     $.ajax({
-        url: "https://localhost:7148/api/Departement" + id,
+        url: "https://localhost:7148/api/Departement/" + id,
         type: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -85,9 +92,9 @@ function GetById(id) {
             //debugger;
             //console.log(result);
             var obj = result.data;
-            $('#InputId').val(obj.id);
-            $('#InputName').val(obj.name);
-            $('#InputManagerId').val(obj.manager_Id);
+            $('#Id').val(obj.id);
+            $('#NameDepartement').val(obj.name);
+            $('#ManagerId').val(obj.manager_Id);
             $('#myModal').modal('show');
         },
         error: function (errormessage) {
@@ -117,12 +124,59 @@ function ConfirmDelete(id) {
     })
 }
 
-function Delete(id) {
+function Update() {
+    var validateForm = true;
+
+    if (
+        $('#NameDepartement').val();
+        $('ManagerId').val();
+      ) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: "Please fill out all your data",
+        })
+        validateForm = false
+    }else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: "Sorry, your phone number is invalid",
+        })
+        validateForm = false
+    }
+
+    var Update = new Object();
+    Update.Id = $('#Id').val();
+    Update.Name = $('#NameDepartement').val();
+    Update.manager_Id = $('#ManagerId').val();
+    $.ajax({
+        url: 'https://localhost:7148/api/Departement',
+        type: 'PUT',
+        data: JSON.stringify(Update),
+        contentType: "application/json; charset=utf-8",
+    }).then((result) => {
+        /*debugger;*/
+        if (result.status == 200) {
+            $('#tb_departement').DataTable().ajax.reload();
+            Swal.fire(
+                'Update Success',
+                '',
+                'success'
+            )
+
+        }
+        else {
+            alert("Update Failed");
+        }
+    });
+}
+
+function Delete() {
     //debugger;
     $.ajax({
-        url: "https://localhost:7148/api/Departement" + id,
+        url: "https://localhost:7148/api/Departement",
         type: "DELETE",
-        contentType: "application/json; charset=utf-8",
         dataType: "json",
     }).then((result) => {
         /*debugger;*/
@@ -141,39 +195,14 @@ function Delete(id) {
     });
 }
 
-function SelectDepartement() {
-    console.log("masuk");
-    $.ajax({
-        url: "https://localhost:7148/api/Departement",
-        type: 'GET',
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        success: function (data) {
-             var obj = result.data;
-            console.log("berhasil");
-            //data.forEach(element => {
-            //    $('#DepartementId').append('<option value="' + element.id + '">' + element.name + '</option>');
-            //})
-
-            for (var i = 0; i < obj.length; i++) {
-                $('#').append('<option value="' + obj[i].id + '">' + obj[i].name + '</option>');
-            }
-
-        },
-        error: function (error) {
-            alert(error.responseJSON);
-        }
-    })
-    console.log("gagal");
-}
-
 function ClearAction() {
-    $('#txtDepartement').val('');
+    $('#NameDepartement').val('');
 }
 
 function BtnAction(type) {
     var btnSave = 'none';
     var btnUpdate = 'none';
+    var fieldManager = 'none'
     var message = '';
 
     switch (type) {
@@ -185,6 +214,7 @@ function BtnAction(type) {
         case 'Update':
             btnSave = 'none';
             btnUpdate = 'block';
+            fieldManager = 'block'
             message = 'Update employee';
             break;
         default:
@@ -193,4 +223,5 @@ function BtnAction(type) {
 
     document.getElementById('Save').style.display = btnSave;
     document.getElementById('Update').style.display = btnUpdate;
+    document.getElementById('ManagerId').style.display = fieldManager;
 }

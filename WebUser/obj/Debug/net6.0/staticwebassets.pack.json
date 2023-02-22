@@ -7501,6 +7501,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\wanda.primayansa\\source\\repos\\HrAPI\\WebUser\\wwwroot\\assets\\img\\github.png",
+      "PackagePath": "staticwebassets\\assets\\img\\github.png"
+    },
+    {
       "Id": "C:\\Users\\wanda.primayansa\\source\\repos\\HrAPI\\WebUser\\wwwroot\\assets\\img\\hero-bg.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\hero-bg.jpg"
     },

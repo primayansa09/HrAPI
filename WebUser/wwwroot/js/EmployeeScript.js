@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $('#tb_employee').DataTable({
         "ajax": {
-            url: "https://localhost:7148/api/Employees",
+            url: "https://localhost:7148/api/Employees/Employee",
             type: "GET",
             dataType: "json",
             dataSrc: "data"
@@ -30,18 +30,9 @@
                     if (data == 1) { return "Female" }
                 }
             },
-            { "data": "manager_Id" },
-            {
-                "data": "departement_Id",
-                "render": function (data) {
-                    if (data == 1) { return "IT Support" }
-                    if (data == 2) { return "RAS" }
-                    if (data == 3) { return "RPA" }
-                    if (data == 4) { return "Consulting Service" }
-                    if (data == 7) { return "HR" }
-
-                }
-            },
+            { "data": "role" },
+            { "data": "managerName" },
+            { "data": "departementName" },
             {
                 "render": function (data, type, row) {
                     return '<button class="btn btn-warning " data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="GetById(' + row.nik + ')"><i class="fa fa-pen"></i></button >' + '&nbsp;' +
@@ -55,7 +46,7 @@
 
 function GetById(nik) {
     $.ajax({
-        url: "https://localhost:7148/api/Employees/" + nik,
+        url: "https://localhost:7148/api/Employees/Employee" + nik,
         type: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -63,13 +54,13 @@ function GetById(nik) {
             //debugger;
             var obj = result.data;
             var gender = obj.gender == 0 ? "Male" : "Famale"
-            var departName = obj.departement_Id;
+            //var departName = obj.departement_Id;
 
-            if (departName == 1) { return "IT Support" }
-            if (departName == 2) { return "RAS" }
-            if (departName == 3) { return "RPA" }
-            if (departName == 4) { return "Consulting Service" }
-            if (departName == 7) { return "HR" }
+            //if (departName == 1) { return "IT Support" }
+            //if (departName == 2) { return "RAS" }
+            //if (departName == 3) { return "RPA" }
+            //if (departName == 4) { return "Consulting Service" }
+            //if (departName == 7) { return "HR" }
 
             $('#InputNIK').val(obj.nik);
             $('#InputFirstName').val(obj.firstName);
@@ -80,7 +71,7 @@ function GetById(nik) {
             $('#InputEmail').val(obj.email);
             $('#InputGender').val(gender);
             $('#InputManagerId').val(obj.manager_Id);
-            $('#InputDepartementId').val(obj.departName);
+            $('#InputDepartementId').val(obj.departement_Id);
             $('#myModal').modal('show');
         },
         error: function (errormessage) {

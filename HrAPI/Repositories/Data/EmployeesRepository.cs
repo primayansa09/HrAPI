@@ -73,13 +73,33 @@ namespace HrAPI.Repositories.Data
 
             return response;
         }
-        //public IEnumerable<EmployeeVM> GetEmployee()
-        //{
-        //    var getEmployee = (from emp in myContext.Employees
-        //                       join role in myContext.Roles
-        //                       on emp.NIK equals mngr.Id
-        //                       where mngr.nam)
-        //}
+        public IEnumerable<EmployeeVM> GetEmployee()
+        {
+            var getEmployee = (from emp in myContext.Employees
+                               join acc in myContext.Accounts
+                               on emp.NIK equals acc.NIK
+                               join accRole in myContext.AccountRoles
+                               on acc.NIK equals accRole.AccountNIK
+                               join role in myContext.Roles
+                               on accRole.Id equals role.Id
+                               join deprt in myContext.Departements
+                               on emp.Departement_Id equals deprt.Id
+                               select new EmployeeVM()
+                               {
+                                   NIK = emp.NIK,
+                                   FirstName = emp.FirstName,
+                                   LastName = emp.LastName,
+                                   Phone = emp.Phone,
+                                   BirthDate = (DateTime)emp.BirthDate,
+                                   Salary = emp.Salary,
+                                   Email = emp.Email,
+                                   Gender = (Gender)emp.Gender,
+                                   Role = role.Name,
+                                   ManagerName = emp.FirstName + " " + emp.LastName,
+                                   DepartementName = deprt.Name
+                               }).ToList();
+            return getEmployee;
+        }
 
     }
 }
